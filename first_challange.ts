@@ -6,7 +6,7 @@
 const buffer = new Uint8Array(1000);
 
 
-//Read URL from prombt and save in buffer.
+//Read URL from prompt and save in buffer.
 await Deno.stdin.read(buffer);
 let textDecoder = new TextDecoder("utf-8");
 let url = textDecoder.decode(buffer);
