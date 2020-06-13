@@ -3,24 +3,38 @@
 //User prombt to enter web address, e.g: https//:google.com
 //Then it should get the data from web address, and store it in new text file.
 
-//If the input is not url just save the user entered value in text.
-
-// const data = new TextEncoder();
-// await Deno.writeFile("webdata.txt", data);
+const buffer = new Uint8Array(1000);
 
 
-// Deno.stdin is type of file so it has method read.
-//thus you can read from it by providing a Uint8Array as buffer and call Deno.stdin.read(buf)
-
-console.log('Please enter some greetings word ::');
-
-const buffer = new Uint8Array(1024);
-
-//Inside buffer uint8Array all the input entered value will be stored...
+//Read URL from prombt and save in buffer.
 await Deno.stdin.read(buffer);
+let textDecoder = new TextDecoder("utf-8");
+let url = textDecoder.decode(buffer);
+try {
+    console.log(url.length,'URL length')
+    const sendRequest = await fetch(url);
+    const value = await sendRequest.json();
 
-//If we want to read Uint8Array value we have to decode it
+    await Deno.writeFile('success.txt',encodeData(JSON.stringify(value)));
+    console.log('Done');
+} catch (error) {
+    console.log('Error...', url.length);
+    await Deno.writeFile('error.txt', encodeData(JSON.stringify(`${url}\n`)));
+    console.error('Error...');
+}
 
-const textDecoder = new TextDecoder();
-const result = textDecoder.decode(buffer);
-console.log('Entered Value ' + result);
+
+function encodeData(value: string): Uint8Array{
+    let encoder = new TextEncoder();
+    console.log(encoder.encode(value));
+    return encoder.encode(value);
+}
+
+//Summary
+
+//To convert Uint8Array use TextEncode.
+//To convert to Uint8Array to text use TextDecoder.
+
+//Bug
+
+//For some reason error always append extra characterss...
