@@ -1,4 +1,10 @@
-import { serve } from 'https://deno.land/std/http/server.ts';
+import { serve } from 'http/server.ts';
+
+//import map is unstable API,
+//Simple importmap per project.
+//Does not support ::std namespace
+
+//To run we can either confi denon.json or  deno run --importmap=import_map.json --unstable deno_webserver.ts
 
 const server = serve({port:3000});
 
@@ -23,7 +29,7 @@ for await (const request of server){
             }    
         }
 
-       await Deno.writeFile('contact.text', buffer);
+       await Deno.writeFile('contact.txt', buffer);
        console.log('submittedsuccesfully');
 
         const headers = new Headers();

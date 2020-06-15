@@ -1,0 +1,23 @@
+{
+  "$schema": "https://deno.land/x/denon/schema.json",
+  "scripts": {
+    "start": { 
+      "cmd": "deno run deno_webserver.ts",
+      "allow": [
+        "write",
+        "net" 
+      ],
+      "importmap": "importmap.json",
+      "unstable": true
+    }
+  },
+  "watcher": {
+    "exts": [
+      "js",
+      "jsx",
+      "ts",
+      "tsx",
+      "json"
+    ]
+  }
+}
