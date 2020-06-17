@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <section class="container">
+
+        <h1>To-Do App</h1>
+
+        <form action="/save" method="POST">
+            <div class="new-task-container box">
+
+                <label for="new-task">Add New Task</label>
+                <input type="text" id="new-task" name="task">
+                <button id="addTask">Add Task</button>
+            </div>
+            <div class="todo-list box">
+                <h2>Incomplete Tasks</h2>
+                <ul>
+                    <li>
+                        <% for(let i = 0; i < todos.length; i++) { %>
+                        <input type="checkbox"><label>
+                            <%= todos[i].todo %>
+                            </lable>
+                            <% } %>
+                    </li>
+                </ul>
+            </div>
+        </form>
+        <!--/todo-list-->
+        <!-- <div class="complete-list box">
+          
+          <h2>Completed Tasks</h2>
+          <ul>
+            <li>Task Name <button class="delete">Delete</button></li>
+      
+          </ul>
+          
+          
+        </div> -->
+        <!--/complete-list-->
+
+    </section>
+    <!--/container-->
+</body>
+
+</html>
