@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <h1>Todo</h1>
+  <div>
+      <form action="/update" method="post">
+        <input type="text" value="<%= todo.todo %>" name="update">
+            <input type="text" name="id" hidden value="<%= todo.id %>">
+            <button>Update</button>
+        </form>
+        <button>
+            <a href="/">
+                Back</a>
+        </button>
+    </div>
+</body>
+
+</html>

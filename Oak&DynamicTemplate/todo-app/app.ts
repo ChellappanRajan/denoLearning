@@ -10,9 +10,9 @@ const todos: Array<{id: number, todo: string}> = [];
 router.get('/', async (ctx,next)=>{
     //Template used here is taken from code pen..
     //https://codepen.io/barkins/pen/aEriL
-    const body =  await renderFileToString(`${Deno.cwd()}/templates/app.ejs`, {title: 'Todo App', todos});
+    const body =  await renderFileToString(`${Deno.cwd()}/views/app.ejs`, {title: 'Todo App', todos});
     ctx.response.body = body;
-next();
+// next();
  
 });
 
@@ -23,6 +23,33 @@ router.post('/save', async (ctx)=>{
         id: new Date().valueOf()
     }
     todos.push(newTask);
+    ctx.response.redirect('/');
+});
+
+
+router.get('/:id', async (ctx)=>{
+    const {id} = ctx.params;
+    let findById;
+    if(id){
+        findById = todos.find(item=>item.id == +id);
+    }
+    const body = await renderFileToString(`${Deno.cwd()}/views/show_todo.ejs`,{
+        title: 'Single Todo',
+        todo:findById
+    });
+    ctx.response.body = body;
+});
+
+
+router.post('/update', async (ctx)=>{
+    const formValue = await ctx.request.body();
+    const id = formValue.value.get('id');
+    console.log(id);
+    let update;
+    if(id){
+        let index = todos.findIndex(item=>item.id == +id);
+        todos[index].todo = formValue.value.get('update') 
+    }
     ctx.response.redirect('/');
 });
 
@@ -39,5 +66,5 @@ app.use( async (ctx,next)=>{
 });
 
 
+console.log('Server running on port 3000');
 await app.listen({port:3000});
-console.log('Server running on port 2000');

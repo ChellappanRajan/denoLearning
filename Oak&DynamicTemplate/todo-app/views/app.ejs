@@ -25,9 +25,11 @@
                 <ul>
                     <li>
                         <% for(let i = 0; i < todos.length; i++) { %>
-                        <input type="checkbox"><label>
-                            <%= todos[i].todo %>
-                            </lable>
+                        <a href="<%= todos[i].id %>">
+                            <label>
+                                <%= todos[i].todo %>
+                                </lable>
+                        </a>
                             <% } %>
                     </li>
                 </ul>
