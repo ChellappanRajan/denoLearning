@@ -1,10 +1,11 @@
 import { Router } from "https://deno.land/x/oak/mod.ts";
-import { GetData } from '../controller/controller.ts';
+import { GetBooks } from '../controller/controller.ts';
 const router = new Router();
 
 
 
-router.get('/', GetData);
+router.get('/', GetBooks);
+// router.get('/books/:bookid', GetData);
 
 
 

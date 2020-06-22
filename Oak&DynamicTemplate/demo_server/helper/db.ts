@@ -1,6 +1,6 @@
 import { MongoClient, Collection } from "https://deno.land/x/mongo@v0.8.0/mod.ts";
 
-let collection:Collection | null = null;
+let collection:Collection;
 
 export function connectDB() {
     const URL = "mongodb://localhost:27017";
@@ -11,4 +11,7 @@ export function connectDB() {
 }
 
 
-export default collection;
+export function getCollection(){
+    return collection;
+}
+
