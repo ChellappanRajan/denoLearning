@@ -12,3 +12,11 @@ export  async function GetBooks(ctx:ctx){
     success:true
   };
 } 
+
+export  async function InsertBook(ctx:ctx){    
+  const book = await  ctx.request.body();
+  const success = await Books.create();
+  ctx.response.body = {
+    success:true
+  };
+} 
