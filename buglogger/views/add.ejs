@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Ticket</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css" type="text/css">
+</head>
+<body>
+  <%- await include('views/common/nav.ejs', {}) %>
+  <div class="container">
+    <div class="alert alert-dismissible alert-success">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>Well done!</strong> You successfully added..</a>.
+    </div>
+    <form method="GET" action="/">
+      <fieldset>
+        <legend>New Ticket</legend>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Enter title</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="enter title" placeholder="Enter title">
+          <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+        <div class="form-group">
+          <label for="reason">Reason</label>
+          <input type="text" class="form-control" id="reason" placeholder="Reason">
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea class="form-control" id="description" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="attachements">Attachements</label>
+          <input type="file" class="form-control-file" id="attachements" aria-describedby="fileHelp">
+          <small id="fileHelp" class="form-text text-muted">Add attachements</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+</body>
+</html>
