@@ -5,11 +5,11 @@ const app = new Application();
 // Logger
 CreateDBConnection.initMongoDb();
 
-app.use(async (ctx:Context<Record<string, any>>, next: () => Promise<void>) => {
-    await next();
-    const rt = ctx.response.headers.get("X-Response-Time");
-    console.log(`${ctx.request.method} ${ctx.request.url} - ${rt}`);
-});
+// app.use(async (ctx:Context<Record<string, any>>, next: () => Promise<void>) => {
+//     await next();
+//     const rt = ctx.response.headers.get("X-Response-Time");
+//     console.log(`${ctx.request.method} ${ctx.request.url} - ${rt}`);
+// });
 
 
 app.use(route.routes());
