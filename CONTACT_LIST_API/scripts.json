@@ -1,6 +1,5 @@
 {
   "$schema": "https://deno.land/x/denon/schema.json",
-  "watch": true,
   "scripts": {
     "start": {
       "cmd": "deno run app.ts",
