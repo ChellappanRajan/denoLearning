@@ -30,3 +30,5 @@ export class CreateDBConnection {
     return this.contactdataBase.collection<Auth>('users');
   }
 }
+
+// http://man.hubwiz.com/docset/MongoDB.docset/Contents/Resources/Documents/docs.mongodb.org/manual/reference/command/createIndexes/index.html
